@@ -4,9 +4,8 @@
 #' @param dat data for clustering (dataframe or matrix)
 #' @param method the distance measure to be used. This must be one of euclidean or manhattan.
 #'
+#'
 #' @return A vector with what was merged and in what order.
-
-#' @return A vector with the cluster assignments.
 #'
 #' @examples
 #' iris2 <- iris %>% select(-Species)
@@ -20,11 +19,10 @@
 
 hier_clust = function(dat, method = 'euclidean'){
 
-    distances = diag.remove(as.matrix(
-        dist(dat, method = ifelse(method == 'euclidean', 'manhattan'))))
+    distances = diag.remove(as.matrix(dist(dat, method = ifelse(method == 'euclidean', 'manhattan'))))
 
     assignments = NULL
-    i = 1
+    step = 1
 
     while(length(assignments) < nrow(dat)){
 
@@ -39,7 +37,7 @@ hier_clust = function(dat, method = 'euclidean'){
             comparison = apply(comparison, 1, max)
             distances = cbind(comparison, new_distances)
             distances = rbind(c(NA, comparison), distances)
-            row.names(distances)[1] = assignments[i]
+            row.names(distances)[1] = assignments[step]
 
         } else {
 
@@ -48,7 +46,7 @@ hier_clust = function(dat, method = 'euclidean'){
 
         }
 
-        i = i + 1
+        step = step + 1
 
     }
 

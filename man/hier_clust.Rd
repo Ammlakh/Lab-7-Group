@@ -13,8 +13,6 @@ hier_clust(dat, method = "euclidean")
 }
 \value{
 A vector with what was merged and in what order.
-
-A vector with the cluster assignments.
 }
 \description{
 Preform hierarchical clustering on a dataset.
