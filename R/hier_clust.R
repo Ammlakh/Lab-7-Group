@@ -19,7 +19,7 @@
 hier_clust = function(x, method = 'euclidean'){
 
     dists = diag.remove(as.matrix(
-        dist(x, method = ifelse(method == 'euclidean', 'euclidean', 'manhattan'))))
+        dist(x, method = ifelse(method == 'euclidean', 'manhattan'))))
 
     merges = NULL
     i = 1
