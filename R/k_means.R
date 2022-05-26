@@ -1,7 +1,6 @@
 #' Preform  a very basic k-means clustering on a dataset.
 #'
 #'
-#'
 #' @param dat numeric matrix to do kmeans to
 #' @param numclusters number of clusters
 #' @param PCA option to preform PCA on the data.
