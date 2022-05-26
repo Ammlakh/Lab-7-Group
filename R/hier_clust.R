@@ -3,7 +3,7 @@
 #'
 #' @param dat data for clustering (dataframe or matrix)
 #' @param method the distance measure to be used. This must be one of euclidean or manhattan.
-#'
+#' @param k The number of clusters to stop clustering at
 #'
 #' @return A vector with what was merged and in what order.
 #'
@@ -17,7 +17,7 @@
 #'
 #' @export
 
-hier_clust = function(dat, method = 'euclidean'){
+hier_clust = function(dat, k, method = 'euclidean'){
 
     distances = diag.remove(as.matrix(dist(dat, method = ifelse(method == 'euclidean', 'manhattan', no = "euclidean"))))
 
