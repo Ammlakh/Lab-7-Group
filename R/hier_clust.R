@@ -1,45 +1,51 @@
-#'
 #' Preform hierarchical clustering on a dataset.
 #'
 #'
-#'
-#' @param x data for clustering
-#' (such as a numeric vector or a data frame with all numeric columns).
+#' @param dat data for clustering (dataframe or matrix)
 #' @param method the distance measure to be used. This must be one of euclidean or manhattan.
 #'
+<<<<<<< Updated upstream
 #' @return A vector with what was merged and in what order.
+=======
+#' @return A vector with the cluster assignments.
+#'
+#' @examples
+#' iris2 <- iris %>% select(-Species)
+#' hier_clust(iris2, method = "euclidean")
+#' hier_clust(iris2, method = "manhattan")
+>>>>>>> Stashed changes
 #'
 #' @import tidyverse
 #' @import sna
 #'
 #' @export
 
-hier_clust = function(x, method = 'euclidean'){
+hier_clust = function(dat, method = 'euclidean'){
 
-    dists = diag.remove(as.matrix(
-        dist(x, method = ifelse(method == 'euclidean', 'manhattan'))))
+    distances = diag.remove(as.matrix(
+        dist(dat, method = ifelse(method == 'euclidean', 'manhattan'))))
 
-    merges = NULL
+    assignments = NULL
     i = 1
 
-    while(length(merges) < nrow(x)){
+    while(length(assignments) < nrow(dat)){
 
-        index = which(dists == min(dists, na.rm = T), arr.ind = T)
-        index = as.matrix(sample_n(data.frame(index),1))
-        merges = c(merges, paste(row.names(dists[index,]), sep = '', collapse = ','))
-        new_dists = dists[-index,-index]
-        comparison = dists[-as.numeric(index),as.numeric(index)]
+        min_dist = which(distances == min(distances, na.rm = T), arr.ind = T)
+        min_dist = as.matrix(sample_n(data.frame(min_dist),1))
+        assignments = c(assignments, paste(row.names(distances[min_dist,]), sep = '', collapse = ','))
+        new_distances = distances[-min_dist,-min_dist]
+        comparison = distances[-as.numeric(min_dist),as.numeric(min_dist)]
 
-        if(length(new_dists) > 1){
+        if(length(new_distances) > 1){
 
             comparison = apply(comparison, 1, max)
-            dists = cbind(comparison, new_dists)
-            dists = rbind(c(NA, comparison), dists)
-            row.names(dists)[1] = merges[i]
+            distances = cbind(comparison, new_distances)
+            distances = rbind(c(NA, comparison), distances)
+            row.names(distances)[1] = assignments[i]
 
         } else {
 
-            merges = c(merges, paste(row.names(dists), sep = '', collapse = ','))
+            assignments = c(assignments, paste(row.names(distances), sep = '', collapse = ','))
             break
 
         }
@@ -48,6 +54,6 @@ hier_clust = function(x, method = 'euclidean'){
 
     }
 
-    return(merges)
+    return(assignments)
 
 }
