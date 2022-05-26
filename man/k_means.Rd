@@ -19,3 +19,10 @@ A list containing cluster means, clustering vector, and total SSE.
 \description{
 Preform  a very basic k-means clustering on a dataset.
 }
+\examples{
+iris2 <- iris \%>\% select(-Species)
+k_means(iris2, 3, pca = T)
+
+k_means(iris2, 4, pca = F)
+
+}

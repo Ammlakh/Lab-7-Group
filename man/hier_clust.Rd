@@ -2,12 +2,12 @@
 % Please edit documentation in R/hier_clust.R
 \name{hier_clust}
 \alias{hier_clust}
-\title{Hierarchical Clustering}
+\title{Preform hierarchical clustering on a dataset.}
 \usage{
-hier_clust(x)
+hier_clust(x, method = "euclidean")
 }
 \arguments{
-\item{x}{numeric matrix of data, or an object that can be coerced to such a matrix
+\item{x}{data for clustering
 (such as a numeric vector or a data frame with all numeric columns).}
 
 \item{method}{the distance measure to be used. This must be one of euclidean or manhattan.}
