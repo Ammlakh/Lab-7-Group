@@ -10,6 +10,10 @@
 #' @param method the distance measure to be used. This must be one of euclidean or manhattan.
 #'
 #' @return A vector with what was merged and in what order.
+#' @examples
+#' iris2 <- iris %>% select(-Species)
+#' hier_clust(iris2, method = "euclidean")
+#' hier_clust(iris2, method = "manhattan")
 #'
 #' @import tidyverse
 #' @import sna
