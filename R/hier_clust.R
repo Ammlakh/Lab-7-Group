@@ -1,11 +1,9 @@
-#' @title Hierarchical Clustering
 #'
-#' @description Preform hierarchical clustering on a dataset.
-#'
-#' @usage hier_clust(x)
+#' Preform hierarchical clustering on a dataset.
 #'
 #'
-#' @param x numeric matrix of data, or an object that can be coerced to such a matrix
+#'
+#' @param x data for clustering
 #' (such as a numeric vector or a data frame with all numeric columns).
 #' @param method the distance measure to be used. This must be one of euclidean or manhattan.
 #'

@@ -1,6 +1,5 @@
 #' Preform  a very basic k-means clustering on a dataset.
 #'
-#' @usage k_means(dat, numclusters, PCA = F)
 #'
 #'
 #' @param dat numeric matrix to do kmeans to
