@@ -4,17 +4,24 @@
 \alias{hier_clust}
 \title{Preform hierarchical clustering on a dataset.}
 \usage{
-hier_clust(x, method = "euclidean")
+hier_clust(dat, method = "euclidean")
 }
 \arguments{
-\item{x}{data for clustering
-(such as a numeric vector or a data frame with all numeric columns).}
+\item{dat}{data for clustering (dataframe or matrix)}
 
 \item{method}{the distance measure to be used. This must be one of euclidean or manhattan.}
 }
 \value{
 A vector with what was merged and in what order.
+
+A vector with the cluster assignments.
 }
 \description{
 Preform hierarchical clustering on a dataset.
+}
+\examples{
+iris2 <- iris \%>\% select(-Species)
+hier_clust(iris2, method = "euclidean")
+hier_clust(iris2, method = "manhattan")
+
 }
