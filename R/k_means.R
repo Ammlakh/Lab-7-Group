@@ -8,6 +8,11 @@
 #' @param PCA option to preform PCA on the data.
 #'
 #' @return A list containing cluster means, clustering vector, and total SSE.
+#' @examples
+#' iris2 <- iris %>% select(-Species)
+#' k_means(iris2, 3, pca = T)
+#'
+#' k_means(iris2, 4, pca = F)
 #'
 #' @import tidyverse
 #'
