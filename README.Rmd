@@ -1,0 +1,66 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# clust431
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of clust431 is to do k-means clustering and hierarchical clustering.
+
+## Installation
+
+You can install the released version of clust431 from [CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("clust431")
+```
+
+## Example for k_means()
+
+This is a basic example which compares the original kmeans function to the one made for lab 7
+
+```{r example}
+library(clust431)
+library(tidyverse)
+
+iris2 <- iris %>%
+    select(Sepal.Length, Sepal.Width)
+k_means(iris2, 3, PCA = F)
+
+```
+
+The chunk below is comparing the results of my function from above to the built-in function. 
+
+```{r}
+actual <- kmeans(iris2, 3)
+actual
+actual$totss - actual$betweenss
+```
+
+As we can see, we get the same SSE, clustering vectors, and cluster means. Our function gives SSE straight up, but there is more calculations needed. That being said, the built-in function has much more information. 
+
+## Example for hier_clust()
+
+This is a basic example which compares the actual hier_clust function to the one made for lab 7
+
+```{r}
+hier_clust(mtcars, method = 'euclidean')
+```
+
+```{r}
+hier_clust(iris2, method = 'manhattan')
+```
+
