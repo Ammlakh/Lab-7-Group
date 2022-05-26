@@ -50,9 +50,9 @@ k_means = function(dat, numclusters, PCA = F){
         for(j in 1:(ncol(clustvect)-2)){
             cluster_means[,j] = tapply(clustvect[,j], clustvect[,ncol(clustvect)-1], mean)
         }
-
+    totss <- sum(as.matrix(dist(dat)^2)) / (2 * nrow(dat))
     }
 
-    return(list('Clustering vector' = clustvect[,ncol(clustvect)-1], 'Cluster Means' = cluster_means, 'Total SSE' = SSE))
+    return(list('Clustering vector' = clustvect[,ncol(clustvect)-1], 'Cluster Means' = cluster_means, 'SSE' = SSE, 'Total SS' = totss))
 
 }

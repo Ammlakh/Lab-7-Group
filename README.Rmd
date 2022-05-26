@@ -48,6 +48,7 @@ The chunk below is comparing the results of my function from above to the built-
 actual <- kmeans(iris2, 3)
 actual
 actual$totss - actual$betweenss
+actual$totss
 ```
 
 As we can see, we get the same SSE, clustering vectors, and cluster means. Our function gives SSE straight up, but there is more calculations needed. That being said, the built-in function has much more information. 
