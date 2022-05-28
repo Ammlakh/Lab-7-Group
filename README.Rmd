@@ -58,18 +58,15 @@ As we can see, we get the same SSE, clustering vectors, and cluster means. Our f
 This is a basic example which compares the actual hier_clust function to the one made for lab 7
 
 ```{r}
-hier_clust(mtcars, method = 'euclidean')
-```
-
-```{r}
 iris3 <- iris %>%
   select(-c(Species))
-hier_clust(iris3, method = 'euclidean')
+b = hier_clust(iris3, k=150, method = 'euclidean')
+head(b, 6)
 a = hclust(dist(iris3))
-a$merge
+head(a$merge, 6)
 ```
 
 ```{r}
-hier_clust(iris2, method = 'manhattan')
+hier_clust(iris3, k=3, method = "manhattan")
 ```
 

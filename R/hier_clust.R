@@ -9,8 +9,8 @@
 #'
 #' @examples
 #' iris2 <- iris %>% select(-Species)
-#' hier_clust(iris2, method = "euclidean")
-#' hier_clust(iris2, method = "manhattan")
+#' hier_clust(iris2, k=2, method = "euclidean")
+#' hier_clust(iris2, k=3, method = "manhattan")
 #'
 #' @import tidyverse
 #' @import sna

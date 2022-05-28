@@ -4,10 +4,12 @@
 \alias{hier_clust}
 \title{Preform hierarchical clustering on a dataset.}
 \usage{
-hier_clust(dat, method = "euclidean")
+hier_clust(dat, k, method = "euclidean")
 }
 \arguments{
 \item{dat}{data for clustering (dataframe or matrix)}
+
+\item{k}{The number of clusters to stop clustering at}
 
 \item{method}{the distance measure to be used. This must be one of euclidean or manhattan.}
 }
@@ -19,7 +21,7 @@ Preform hierarchical clustering on a dataset.
 }
 \examples{
 iris2 <- iris \%>\% select(-Species)
-hier_clust(iris2, method = "euclidean")
-hier_clust(iris2, method = "manhattan")
+hier_clust(iris2, k=2, method = "euclidean")
+hier_clust(iris2, k=3, method = "manhattan")
 
 }
