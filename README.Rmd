@@ -70,3 +70,7 @@ head(a$merge, 6)
 hier_clust(iris3, k=3, method = "manhattan")
 ```
 
+```{r}
+hier_clust(iris3, k=4, method = "euclidean")
+```
+
