@@ -62,6 +62,14 @@ hier_clust(mtcars, method = 'euclidean')
 ```
 
 ```{r}
+iris3 <- iris %>%
+  select(-c(Species))
+hier_clust(iris3, method = 'euclidean')
+a = hclust(dist(iris3))
+a$merge
+```
+
+```{r}
 hier_clust(iris2, method = 'manhattan')
 ```
 
