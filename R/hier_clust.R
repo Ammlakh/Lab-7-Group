@@ -49,7 +49,21 @@ hier_clust = function(dat, k, method = 'euclidean'){
         step = step + 1
 
     }
-
-    return(assignments)
+    pascals = k*(k+1)/2
+    index = nrow(dat) - pascals
+    clusterlist = c()
+    for(i in 1:k){
+        clust = assignments[index+i]
+        clusterlist = c(clusterlist,clust)
+    }
+    n=c()
+    for(i in 1:k){
+        name = paste("cluster", i)
+        n = c(n,name)
+    }
+    names(clusterlist) <- n
+    return(clusterlist)
 
 }
+
+
